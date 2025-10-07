@@ -8,6 +8,7 @@ body {
   padding: 0;
 }
 
+/* ---------- HEADER ---------- */
 header {
   background: url('../images/ev_header.jpg') center/cover no-repeat;
   position: relative;
@@ -36,6 +37,7 @@ h1 {
   color: #a0cfff;
 }
 
+/* ---------- MAIN LAYOUT ---------- */
 main {
   max-width: 900px;
   margin: 2em auto;
@@ -74,11 +76,7 @@ a:hover {
   text-shadow: 0 0 8px #00d8ff;
 }
 
-.back-link {
-  display: inline-block;
-  margin-top: 1.5em;
-}
-
+/* ---------- FOOTER ---------- */
 footer {
   text-align: center;
   padding: 2em;
@@ -87,14 +85,7 @@ footer {
   font-size: 0.9em;
 }
 
-.subheader {
-  text-align: center;
-  background: linear-gradient(to right, #041c32, #003554);
-  padding: 4em 1em;
-  box-shadow: inset 0 0 50px rgba(0, 216, 255, 0.2);
-}
-
-/* Navigation Bar */
+/* ---------- NAVIGATION ---------- */
 nav {
   background: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -128,7 +119,7 @@ nav a:hover {
   text-shadow: 0 0 6px #00d8ff;
 }
 
-/* Hero Section */
+/* ---------- HERO SECTION ---------- */
 .hero {
   height: 100vh;
   background: url('../Images/ElectricCar.png') center/cover no-repeat;
@@ -173,33 +164,7 @@ nav a:hover {
   box-shadow: 0 0 15px #00d8ff;
 }
 
-/* Resource Buttons */
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  justify-content: center;
-  margin-top: 1.5em;
-}
-
-.resource-button {
-  background: rgba(0, 216, 255, 0.2);
-  border: 1px solid #00d8ff;
-  padding: 0.8em 1.5em;
-  border-radius: 25px;
-  text-decoration: none;
-  color: #e0f7ff;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.resource-button:hover {
-  background: #00d8ff;
-  color: #041c32;
-  box-shadow: 0 0 10px #00d8ff;
-}
-
-/* QR Section */
+/* ---------- QR SECTION ---------- */
 .qr-section {
   text-align: center;
   margin-top: 1.5em;
@@ -208,4 +173,115 @@ nav a:hover {
 .qr {
   width: 120px;
   margin-bottom: 0.8em;
+}
+
+/* ======================================
+   UNIFIED TECHY BUTTON + DROPDOWN STYLE
+   ====================================== */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2em;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+/* Base style for all resource buttons */
+.resource-button,
+.dropdown button {
+  background: rgba(0, 216, 255, 0.15);
+  border: 1.5px solid #00d8ff;
+  color: #e0f7ff;
+  font-weight: 500;
+  font-size: 0.95em;
+  border-radius: 30px;
+  padding: 0.8em 1.8em;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+  box-shadow: 0 0 12px rgba(0, 216, 255, 0.1);
+  backdrop-filter: blur(3px);
+  position: relative;
+}
+
+.resource-button:hover,
+.dropdown button:hover {
+  background: #00d8ff;
+  color: #041c32;
+  box-shadow: 0 0 18px #00d8ff;
+  transform: translateY(-2px);
+}
+
+.resource-button:active,
+.dropdown button:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 10px #00d8ff;
+}
+
+/* ---------- DROPDOWN CONTAINER ---------- */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: rgba(10, 30, 40, 0.98);
+  min-width: 200px;
+  border: 1px solid #00d8ff;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 216, 255, 0.3);
+  z-index: 20;
+  backdrop-filter: blur(6px);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 0.8em 1em;
+  color: #e0f7ff;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: all 0.3s;
+}
+
+.dropdown-content a:hover {
+  background: #00d8ff;
+  color: #041c32;
+  box-shadow: inset 0 0 10px rgba(0, 216, 255, 0.5);
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ---------- ANIMATED ARROW ---------- */
+.dropdown button::after {
+  content: "▼";
+  font-size: 0.8em;
+  margin-left: 0.4em;
+  display: inline-block;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  color: #00d8ff;
+}
+
+.dropdown:hover button::after {
+  transform: translateY(2px) rotate(180deg);
+  text-shadow: 0 0 8px #00d8ff;
+  color: #041c32;
+}
+
+/* --- Dropdown hover fix for clickable items --- */
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
+  display: block;
+}
+
+.dropdown-content a {
+  cursor: pointer;
 }

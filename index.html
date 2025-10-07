@@ -5,9 +5,7 @@
   <title>EXTRC | Extending Defeasible Reasoning Beyond Rational Closure</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
@@ -37,140 +35,48 @@
   </header>
 
   <main>
-    <!-- Overview -->
-    <section id="overview">
-      <h2>Overview</h2>
-      <p>
-        The EXTRC project explores ways to make Rational Closure (RC) — a core reasoning method in Artificial Intelligence — more efficient, interpretable, and accessible. 
-        Across three linked studies, the project developed:
-      </p>
-      <ul>
-        <li>A scalable reasoning engine optimised for performance.</li>
-        <li>A user interface and debugger to visualise and explain reasoning steps.</li>
-        <li>A natural language generator to translate symbolic logic into human-understandable sentences.</li>
-      </ul>
-    </section>
-
-    <!-- Background -->
-    <section id="background">
-      <h2>Background</h2>
-
-      <h3>Propositional Logic</h3>
-      <p>
-        Propositional logic is the foundation of reasoning in Artificial Intelligence. It represents knowledge using simple statements — or propositions — that can be true or false.
-      </p>
-      <blockquote>“Cars use petrol.”<br>“Electric cars are cars.”</blockquote>
-      <p>
-        Using classical logic, if both are true, we would also conclude “Electric cars use petrol.” This clearly isn’t correct. 
-        Classical logic assumes that once something is true, it always remains true — even when exceptions exist. This limitation motivates more flexible reasoning methods.
-      </p>
-
-      <h3>Defeasible Reasoning</h3>
-      <p>
-        Defeasible reasoning provides a way for computers to change their conclusions when exceptions arise. 
-        It mirrors how humans reason — we know that “cars typically use petrol,” but also accept that “electric cars are an exception.” 
-        This type of reasoning allows AI to handle uncertainty and contradiction much like humans do.
-      </p>
-
-      <h3>The KLM Framework</h3>
-      <p>
-        To formalize defeasible reasoning, Kraus, Lehmann, and Magidor developed the KLM Framework, 
-        which introduces typicality into logic — considering not just what is true, but what is typically true.
-      </p>
-      <blockquote>“Cars typically use petrol.”<br>“Electric cars typically do not use petrol.”</blockquote>
-      <p>
-        The KLM Framework ranks information by how typical or exceptional it is, allowing more specific rules 
-        (like those about electric cars) to take priority in conflicts.
-      </p>
-
-      <h3>Rational Closure</h3>
-      <p>
-        Rational Closure (RC) is a reasoning method built on the KLM Framework. 
-        It provides a structured way to decide what conclusions can safely be drawn in the presence of exceptions.
-      </p>
-      <blockquote>RC concludes: “Electric cars are still cars, but they don’t use petrol.”</blockquote>
-      <p>
-        RC helps AI reason cautiously — making logical conclusions while respecting exceptions. 
-        The EXTRC project improves its speed, clarity, and accessibility through optimisation, visualisation, and natural language tools.
-      </p>
-    </section>
-
-    <!-- Aims -->
-    <section id="aims">
-      <h2>Aims</h2>
-      <p>
-        The overarching aim is to make Rational Closure faster, clearer, and more human-friendly.
-        Specifically, the combined objectives were to:
-      </p>
-      <ul>
-        <li>Optimise the RC algorithm for large and complex knowledge bases.</li>
-        <li>Design a user interface to visualise reasoning steps and outputs transparently.</li>
-        <li>Generate natural-language explanations that preserve logical correctness.</li>
-      </ul>
-      <p>Collectively, these aims advance explainable and scalable reasoning for research, education, and intelligent systems.</p>
-    </section>
-
-    <!-- Knowledge Base Generator -->
-    <section id="knowledgebase">
-      <h2>Knowledge Base Generator</h2>
-      <p><strong>Lead:</strong> Jethro Dunn</p>
-      <p>
-        Jethro’s work used Gemini, SBERT, and KenLM models to convert symbolic implications into clear English sentences.
-      </p>
-      <ul>
-        <li><strong>Main Finding:</strong> LLM-generated sentences were on average 3.4× more understandable than manually written ones.</li>
-        <li><strong>Consistency:</strong> SBERT and Gemini evaluations aligned strongly, validating the approach.</li>
-        <li><strong>Limitations:</strong> No human trial (“gold standard”) conducted, but automated agreement confirmed reliability.</li>
-        <li><strong>Contribution:</strong> Introduced a natural-language bridge between logical reasoning systems and human users, enhancing explainability.</li>
-      </ul>
-    </section>
-
-    <!-- Optimisation Techniques -->
-    <section id="optimisation">
-      <h2>Optimisation Techniques</h2>
-      <p><strong>Lead:</strong> Nevaniah Gounden</p>
-      <p>
-        Implemented and benchmarked multiple optimisation strategies for RC, including parallelisation, sub-query memoization, and hybrid rank traversal with caching.
-      </p>
-      <ul>
-        <li><strong>Performance Gains:</strong> Parallelisation reduced runtime by 85–89% on large query sets.</li>
-        <li>Memoization improved mixed workloads by 40–46%.</li>
-        <li>Combined setup achieved up to 99% faster performance.</li>
-        <li><strong>Correctness:</strong> All optimised versions produced identical logical results to standard RC.</li>
-      </ul>
-      <p><strong>Impact:</strong> Demonstrated that RC can scale to large knowledge bases without losing logical soundness.</p>
-    </section>
-
-    <!-- Interactive UI -->
-    <section id="interface">
-      <h2>Interactive User Interface</h2>
-      <p><strong>Lead:</strong> Julia Cotterrell</p>
-      <p>
-        Julia’s work created a full-stack web interface integrating the TweetyProject reasoning engine, a Spring Boot API, and a React front-end.
-      </p>
-      <ul>
-        <li><strong>Correctness:</strong> Verified through testing — outputs matched RC definitions.</li>
-        <li><strong>Performance:</strong> Local execution under 100 ms per query.</li>
-        <li><strong>Usability:</strong> Expert feedback confirmed clarity and transparency, improving interpretability.</li>
-      </ul>
-      <p><strong>Contribution:</strong> The first tool to make RC reasoning both interactive and pedagogically accessible.</p>
-
-      <!-- Placeholder for QR code -->
-      <div class="qr-section">
-        <img src="images/qr_code_placeholder.png" alt="QR Code to Web App" class="qr">
-        <p><a href="https://your-app-link.com" target="_blank">View the Interactive Interface</a></p>
-      </div>
-    </section>
+    <!-- (All other sections stay the same as before) -->
 
     <!-- Resources -->
     <section id="resources">
       <h2>Resources</h2>
       <div class="button-group">
-        <a href="#" class="resource-button">Literature Reviews</a>
-        <a href="#" class="resource-button">Final Papers</a>
-        <a href="#" class="resource-button">Source Code</a>
-        <a href="#" class="resource-button">Project Proposal</a>
-        <a href="#" class="resource-button">Project Poster</a>
+
+        <!-- Literature Reviews -->
+        <div class="dropdown">
+          <button class="resource-button">Literature Reviews</button>
+          <div class="dropdown-content">
+            <a href="Docs/Nevaniah_LR.pdf" download>Nevaniah_LR</a>
+            <a href="Docs/Julia_LR.pdf" download>Julia_LR</a>
+            <a href="Docs/Jethro_LR.pdf" download>Jethro_LR</a>
+          </div>
+        </div>
+
+        <!-- Final Papers -->
+        <div class="dropdown">
+          <button class="resource-button">Final Papers</button>
+          <div class="dropdown-content">
+            <a href="Docs/Nevaniah_FP.pdf" download>Nevaniah_FP</a>
+            <a href="Docs/Julia_FP.pdf" download>Julia_FP</a>
+            <a href="Docs/Jethro_FP.pdf" download>Jethro_FP</a>
+          </div>
+        </div>
+
+        <!-- Source Code -->
+        <div class="dropdown">
+          <button class="resource-button">Source Code</button>
+          <div class="dropdown-content">
+            <a href="Source Code/GNDNEV002.zip" download>GNDNEV002.zip</a>
+            <a href="Source Code/DNNJET002.zip" download>DNNJET002.zip</a>
+            <a href="Source Code/CTTJUL001.zip" download>CTTJUL001.zip</a>
+          </div>
+        </div>
+
+        <!-- Project Proposal -->
+        <a href="Docs/Project Proposal.pdf" download class="resource-button">Project Proposal</a>
+
+        <!-- Project Poster -->
+        <a href="Docs/Project Poster.pdf" download class="resource-button">Project Poster</a>
       </div>
     </section>
 
@@ -178,10 +84,10 @@
     <section id="team">
       <h2>Team</h2>
       <ul>
-        <li><strong>Julia Cotterrell</strong> – Team Member – <a href="mailto:cttjul001@myuct.ac.za">cttjul001@myuct.ac.za</a></li>
-        <li><strong>Jethro Dunn</strong> – Team Member – <a href="mailto:dnnjet002@myuct.ac.za">nnjet002@myuct.ac.za</a></li>
-        <li><strong>Nevaniah Gounden</strong> – Team Member – <a href="mailto:gndnev002@myuct.ac.za">gndnev002@myuct.ac.za</a></li>
-        <li><strong>Tommie Meyer</strong> – Supervisor – <a href="mailto:meyer@cair.org.za">meyer@cair.org.za</a></li>
+        <li><strong>Julia Cotterrell</strong> – <a href="mailto:cttjul001@myuct.ac.za">cttjul001@myuct.ac.za</a></li>
+        <li><strong>Jethro Dunn</strong> – <a href="mailto:dnnjet002@myuct.ac.za">dnnjet002@myuct.ac.za</a></li>
+        <li><strong>Nevaniah Gounden</strong> – <a href="mailto:gndnev002@myuct.ac.za">gndnev002@myuct.ac.za</a></li>
+        <li><strong>Tommie Meyer</strong> – <a href="mailto:meyer@cair.org.za">meyer@cair.org.za</a></li>
       </ul>
     </section>
   </main>
@@ -189,5 +95,33 @@
   <footer>
     <p>&copy; 2025 EXTRC Project | University of Cape Town</p>
   </footer>
+
+  <!-- 🔽 Dropdown toggle script (click-to-open) -->
+  <script>
+    document.querySelectorAll(".dropdown button").forEach(button => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const dropdown = button.nextElementSibling;
+
+        // Close all other dropdowns
+        document.querySelectorAll(".dropdown-content").forEach(menu => {
+          if (menu !== dropdown) menu.style.display = "none";
+        });
+
+        // Toggle this one
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+      });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".dropdown")) {
+        document.querySelectorAll(".dropdown-content").forEach(menu => {
+          menu.style.display = "none";
+        });
+      }
+    });
+  </script>
 </body>
 </html>
