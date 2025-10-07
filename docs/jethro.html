@@ -7,59 +7,68 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  
   <header>
-    <div class="container">
-      <div class="title">
-        <div>
-          <h1>Jethro Dunn</h1>
-          <p class="subtitle"><a href="mailto:dnnjet002@myuct.ac.za">dnnjet002@myuct.ac.za</a></p>
-        </div>
-      </div>
+    <div class="container navbar">
+      <div class="brand"><span class="logo"></span><span>EXTRC · UCT CS Honours 2025</span></div>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="julia.html">Julia</a>
-        <a href="jethro.html">Jethro</a>
-        <a href="nevaniah.html">Nevaniah</a>
-        <a href="docs/EXTRC_Project_Poster.pdf">Poster</a>
+        <a href="index.html#overview">Overview</a>
+        <a href="index.html#highlights">Highlights</a>
+        <a href="index.html#deliverables">Deliverables</a>
+        <a href="jethro.html">This page</a>
+        <a class="btn" href="docs/EXTRC_Project_Poster.pdf">Poster</a>
       </nav>
     </div>
   </header>
-
-  <main class="container">
-    <section>
-      <h2>Summary</h2>
-      <p>Converts symbolic, synthetic knowledge-base statements into coherent English sentences to support interpretability while preserving logical structure.</p>
-      <p><a class="btn" href="docs/2025_EXTRC___Final_Paper___Jethro.pdf">Read Full Paper (PDF)</a></p>
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <h1>Jethro Dunn</h1>
+        <p class="lead"><a href="mailto:dnnjet002@myuct.ac.za">dnnjet002@myuct.ac.za</a></p>
+        <div class="badges">
+          <span class="badge">Individual Contribution</span>
+          <span class="badge">UCT CS Honours 2025</span>
+        </div>
+      </div>
     </section>
 
     <section>
-      <h2>Highlights</h2>
-      <ul>
-        <li>Natural-language mapping from propositional atoms to phrases.</li>
-        <li>Comparison of generated vs manual sentences across coherence metrics.</li>
-        <li>Supports UI explanations and human validation of synthetic KBs.</li>
-      </ul>
+      <div class="container grid">
+        <article class="card">
+          <h2 class="section-title">Summary</h2>
+          <p>Converts symbolic, synthetic knowledge‑base statements into coherent English sentences to support interpretability while preserving logical structure.</p>
+          <p><a class="btn" href="docs/2025_EXTRC___Final_Paper___Jethro.pdf">Read Full Paper (PDF)</a></p>
+        </article>
+        <aside class="card">
+          <h3>Quick Links</h3>
+          <ul class="clean">
+            <li><a href="https://extrc.vercel.app" target="_blank" rel="noopener">Live Demo (external)</a></li>
+            <li><a href="docs/Lit_Review.pdf">Literature Review</a></li>
+            <li><a href="docs/Project_Proposal_final.pdf">Project Proposal</a></li>
+            <li><a href="index.html">Group Homepage</a></li>
+          </ul>
+        </aside>
+      </div>
     </section>
 
     <section>
-      <h2>Other Links</h2>
-      <ul>
-        <li><a href="https://extrc.vercel.app" target="_blank" rel="noopener">Live Demo (external, non-permanent)</a></li>
-        <li><a href="docs/Lit_Review.pdf">Literature Review (PDF)</a></li>
-        <li><a href="docs/Project_Proposal_final.pdf">Project Proposal (PDF)</a></li>
-      </ul>
+      <div class="container">
+        <h2 class="section-title">Highlights</h2>
+        <div class="grid">
+          <div class="card"><strong>Phrase mapping</strong><br/>Atoms→phrases for readable KBs.</div>
+          <div class="card"><strong>Comparative evaluation</strong><br/>Generated vs manually themed sentences.</div>
+          <div class="card"><strong>UI support</strong><br/>Feeds human‑readable labels to the explainer.</div>
+        </div>
+      </div>
     </section>
+
   </main>
-
-  
-<footer>
-  <div class="container">
-    <strong>University of Cape Town — Department of Computer Science</strong><br/>
-    Supervisor: Prof. Tommie Meyer &middot; Second Reader: Johan Bontes<br/>
-    <small>Honours Project 2025 &middot; Static website (no server-side scripts). Demo link is an external, non-permanent resource.</small>
-  </div>
-</footer>
-
-  <script src="js/script.js"></script>
+  <footer>
+    <div class="container">
+      <div><strong>University of Cape Town — Department of Computer Science</strong></div>
+      <div>Honours Project 2025 · Static site</div>
+    </div>
+  </footer>
 </body>
 </html>
