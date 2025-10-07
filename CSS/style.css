@@ -426,6 +426,208 @@ section {
   text-shadow: 0 0 6px rgba(0, 216, 255, 0.2);
 }
 
+/* ====== TEAM SECTION ====== */
+#team {
+  background: rgba(6, 26, 38, 0.75);
+  border-radius: 18px;
+  padding: 2.5em;
+  box-shadow: 0 0 25px rgba(0, 216, 255, 0.15),
+              inset 0 0 8px rgba(0, 216, 255, 0.05);
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 1;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.team-card {
+  background: rgba(8, 35, 50, 0.9);
+  border: 1.5px solid #00d8ff;
+  border-radius: 15px;
+  padding: 1.8em;
+  text-align: center;
+  color: #e0f7ff;
+  box-shadow: 0 0 30px rgba(0, 216, 255, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 35px rgba(0, 216, 255, 0.4);
+}
+
+.team-icon {
+  font-size: 3em;
+  margin-bottom: 0.6em;
+  color: #00eaff;
+  text-shadow: 0 0 18px rgba(0, 216, 255, 0.6),
+               0 0 25px rgba(0, 216, 255, 0.3);
+  transition: text-shadow 0.3s ease;
+}
+
+.team-card:hover .team-icon {
+  text-shadow: 0 0 25px rgba(0, 216, 255, 0.8),
+               0 0 40px rgba(0, 216, 255, 0.6);
+}
+
+.team-card h3 {
+  margin: 0.3em 0 0.2em;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.role {
+  font-size: 0.95em;
+  color: #a0cfff;
+  margin-bottom: 0.6em;
+}
+
+/* Fix: ensure mailto links are clickable and glow cyan on hover */
+.team-card a {
+  color: #9fdcff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.team-card a:hover,
+.team-card a:focus-visible {
+  color: #00d8ff;
+  text-shadow: 0 0 10px #00d8ff, 0 0 20px #00d8ff;
+  border-bottom: 1px solid rgba(0,216,255,0.4);
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+  }
+}
+
+
+.team-card h3 {
+  margin: 0.3em 0 0.2em;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.role {
+  font-size: 0.95em;
+  color: #a0cfff;
+  margin-bottom: 0.6em;
+}
+
+/* Email links: cyan hover glow + active mailto click */
+.team-card a {
+  color: #00d8ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
+.team-card a:hover,
+.team-card a:focus-visible {
+  color: #7be9ff;
+  text-shadow: 0 0 10px #00d8ff, 0 0 20px #00d8ff;
+  border-bottom: 1px solid rgba(0,216,255,0.4);
+}
+
+/* Make all cards equal glow */
+.team-card {
+  border: 1.5px solid #00d8ff;
+  background: rgba(8, 35, 50, 0.9);
+  box-shadow: 0 0 30px rgba(0, 216, 255, 0.25);
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+  }
+}
+
+/* --- FIX: Dropdown menus hiding behind Team section --- */
+.dropdown {
+  position: relative;
+  z-index: 1000; /* higher than Team */
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: rgba(10, 30, 40, 0.98);
+  border: 1px solid #00d8ff;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 216, 255, 0.3);
+  backdrop-filter: blur(6px);
+  display: none;
+  min-width: 200px;
+  z-index: 9999; /* ensures dropdown stays on top */
+}
+
+/* Lower the Team section slightly in stacking order */
+#team {
+  position: relative;
+  z-index: 0;
+}
+
+/* === FINAL FIX: Ensure dropdowns always appear above Team section === */
+
+/* Give all dropdowns a dedicated top layer */
+.dropdown {
+  position: relative;
+  z-index: 99999;
+}
+
+/* Make dropdown content sit in its own floating layer */
+.dropdown-content {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  display: none;
+  background: rgba(10, 30, 40, 0.98);
+  min-width: 200px;
+  border: 1px solid #00d8ff;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 216, 255, 0.3);
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.2s ease;
+  z-index: 9999999; /* highest level so nothing overlaps */
+}
+
+/* Lower the Team section beneath dropdowns */
+#team {
+  position: relative;
+  z-index: 1;
+  isolation: isolate; /* keeps its blur effects without blocking layers above */
+}
+
+/* Optional: ensure Resources section is normal stacking context */
+#resources {
+  position: relative;
+  z-index: 10;
+}
+
+
+
+
+
+
 
 
 
