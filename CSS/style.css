@@ -623,6 +623,41 @@ section {
   z-index: 10;
 }
 
+/* === FINAL Z-INDEX HIERARCHY FIX === */
+
+/* Navigation should always be the very top layer */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999999; /* highest overall */
+}
+
+/* Dropdowns should be above page content but below nav */
+.dropdown {
+  position: relative;
+  z-index: 9999;
+}
+
+.dropdown-content {
+  position: absolute;
+  z-index: 99999;
+}
+
+/* Resources section normal stacking context */
+#resources {
+  position: relative;
+  z-index: 1; /* below nav, above team */
+}
+
+/* Team sits below dropdowns but above background */
+#team {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+}
+
+
 
 
 
