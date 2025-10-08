@@ -113,7 +113,7 @@
       <h2>Knowledge Base Generator</h2>
       <p><strong>Lead:</strong> Jethro Dunn</p>
       <p>
-        Jethro’s work used Gemini, SBERT, and KenLM models to convert symbolic implications into clear English sentences.
+        Utilized Gemini, SBERT, and KenLM models to convert symbolic implications into clear English sentences.
       </p>
       <ul>
         <li><strong>Main Finding:</strong> LLM-generated sentences were on average 3.4× more understandable than manually written ones.</li>
@@ -128,12 +128,12 @@
       <h2>Optimisation Techniques</h2>
       <p><strong>Lead:</strong> Nevaniah Gounden</p>
       <p>
-        Implemented and benchmarked multiple optimisation strategies for RC, including parallelisation, sub-query memoization, and hybrid rank traversal with caching.
+        Implemented and benchmarked several optimisation strategies for RC, including parallelisation, sub-query memoization, and multi rank traversal with caching.
       </p>
       <ul>
         <li><strong>Performance Gains:</strong> Parallelisation reduced runtime by 85–89% on large query sets.</li>
-        <li>Memoization improved mixed workloads by 40–46%.</li>
-        <li>Combined setup achieved up to 99% faster performance.</li>
+        <li>Memoization improved mixed and half repeated workloads by 40–46%.</li>
+        <li>In many instances, the combined setup yielded performance improvements greater than 90%.</li>
         <li><strong>Correctness:</strong> All optimised versions produced identical logical results to standard RC.</li>
       </ul>
       <p><strong>Impact:</strong> Demonstrated that RC can scale to large knowledge bases without losing logical soundness.</p>
@@ -144,7 +144,7 @@
       <h2>Interactive User Interface</h2>
       <p><strong>Lead:</strong> Julia Cotterrell</p>
       <p>
-        Julia’s work created a full-stack web interface integrating the TweetyProject reasoning engine, a Spring Boot API, and a React front-end.
+        Created a full-stack web interface integrating the TweetyProject reasoning engine, a Spring Boot API, and a React front-end.
       </p>
       <ul>
         <li><strong>Correctness:</strong> Verified through testing — outputs matched RC definitions.</li>
