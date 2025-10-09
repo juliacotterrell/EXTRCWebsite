@@ -2,21 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Julia Cotterrell | EXTRC Project</title>
+  <title>Julia Cotterrell | Interactive User Interface</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="subheader">
     <h1>Julia Cotterrell</h1>
-    <p class="subtitle">Logic Framework Design</p>
+    <p class="subtitle">Interactive User Interface for Rational Closure Reasoning</p>
   </header>
 
   <main>
+    <!-- ABSTRACT -->
     <section>
-      <h2>Contribution</h2>
+      <h2>Abstract</h2>
       <p>
-        Focused on designing the logical underpinnings of EXTRC, including extending the Rational Closure 
-        framework and formalizing the principles of defeasibility and exception handling.
+        This project presents a <strong>web-based interface for Rational Closure (RC)</strong> reasoning, a form of
+        <em>defeasible logic</em> that allows AI systems to reason about exceptions and uncertainty. The interface
+        translates symbolic logic outputs into clear, natural language explanations, combining <strong>Java</strong>,
+        <strong>Spring Boot</strong>, and <strong>React</strong> to deliver a fast, interpretable, and user-friendly
+        system. The goal was to make complex reasoning transparent to users without compromising logical integrity
+        or performance.
+      </p>
+    </section>
+
+    <!-- INTRODUCTION -->
+    <section>
+      <h2>Introduction & Aims</h2>
+      <p>
+        Rational Closure (RC) provides a structured approach for drawing consistent conclusions when rules have
+        exceptions. However, traditional implementations expose only symbolic derivations, making them difficult
+        for non-experts to interpret. This project aimed to:
+      </p>
+      <ul>
+        <li>Develop an <strong>interactive web interface</strong> for exploring RC reasoning results.</li>
+        <li>Translate symbolic reasoning into <strong>natural language explanations</strong> to improve accessibility.</li>
+        <li>Maintain <strong>formal correctness and responsiveness</strong> while supporting visual transparency.</li>
+      </ul>
+      <p>
+        The broader objective was to demonstrate how symbolic reasoning can be made intuitive, promoting the use
+        of defeasible reasoning models in educational and research contexts.
+      </p>
+    </section>
+
+    <!-- SYSTEM DESIGN -->
+    <section>
+      <h2>System Design & Implementation</h2>
+      <p>
+        The interface integrates a <strong>Java back end</strong> (via Spring Boot) with a <strong>React front end</strong>,
+        connected through a RESTful API. Logical reasoning is handled by the <em>TweetyProject</em> library, which
+        computes RC entailments and returns results to the user interface. The front end displays ranked knowledge
+        bases, query results, and visualised reasoning chains.
+      </p>
+      <p>
+        To enhance usability, the interface uses colour-coded components, collapsible panels, and contextual
+        explanations. Users can trace how statements are accepted or rejected through ranked rule evaluation,
+        supported by step-by-step annotations in natural language. Each reasoning type—Naïve, Binary, Ternary,
+        Cached, and Hybrid—is accessible interactively, enabling comparison across entailment strategies.
+      </p>
+    </section>
+
+    <!-- RESULTS -->
+    <section>
+      <h2>Results</h2>
+      <p>
+        Testing confirmed that all reasoning types generated correct and consistent results. The system achieved
+        <strong>average query times under 100 ms</strong> locally, ensuring near-instant responses. Qualitative feedback
+        highlighted the interface’s clarity, structured presentation, and visual design, which improved comprehension
+        of how exceptions influence logical reasoning.
+      </p>
+      <p>
+        The project also contributed to the broader <strong>EXTRC framework</strong> by providing a visual hub that
+        integrates outputs from the <em>Optimisation</em> and <em>Knowledge Base Generator</em> components,
+        consolidating technical advances into a cohesive, user-oriented platform.
+      </p>
+    </section>
+
+    <!-- DISCUSSION & CONCLUSION -->
+    <section>
+      <h2>Discussion & Conclusion</h2>
+      <p>
+        The interface effectively demonstrates how <strong>explainable AI</strong> can be realised through
+        interpretable reasoning systems. By combining symbolic precision with intuitive design, it bridges the
+        gap between human and machine reasoning. Unlike earlier RC tools, this interface narrates the reasoning
+        process step-by-step, ensuring transparency and trustworthiness.
+      </p>
+      <p>
+        Future enhancements include extending support to <em>Lexicographic</em> and <em>Relevant Closure</em> methods,
+        refining natural language output for greater fluency, and conducting structured user studies to evaluate
+        educational impact.
       </p>
     </section>
 

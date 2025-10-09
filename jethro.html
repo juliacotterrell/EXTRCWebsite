@@ -2,21 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Jethro Dunn | EXTRC Project</title>
+  <title>Jethro Dunn | Knowledge Base Generator</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="subheader">
     <h1>Jethro Dunn</h1>
-    <p class="subtitle">Evaluation and Reasoning Models</p>
+    <p class="subtitle">Implementing Natural Language into Knowledge Base Generation</p>
   </header>
 
   <main>
+    <!-- ABSTRACT -->
     <section>
-      <h2>Contribution</h2>
+      <h2>Abstract</h2>
       <p>
-        Responsible for the evaluation phase of EXTRC, Jethro benchmarked the extended reasoning system 
-        against classical frameworks, analyzing performance, scalability, and interpretability metrics.
+        This project bridges the gap between <strong>symbolic reasoning</strong> and <strong>human interpretability</strong>
+        by integrating <em>Natural Language Processing (NLP)</em> into a Knowledge Base Generator (KBG). Traditional KBGs
+        create ranked logical statements used for defeasible reasoning algorithms such as <em>Rational Closure</em>, but
+        these are symbolic and difficult for humans to interpret. Jethro’s work uses a <strong>large language model (Gemini Flash 2.5)</strong>
+        to translate logical propositions into coherent English sentences while preserving logical structure. This allows
+        symbolic reasoning systems to become more transparent and understandable to human users :contentReference[oaicite:3]{index=3}.
+      </p>
+    </section>
+
+    <!-- INTRODUCTION -->
+    <section>
+      <h2>Introduction & Aims</h2>
+      <p>
+        Knowledge Representation and Reasoning (KRR) aims to express information so that computers can reason with it
+        logically. However, symbolic systems like those used in <em>Defeasible Reasoning</em> produce knowledge bases that are
+        syntactically correct but inaccessible to humans. This project sought to:
+      </p>
+      <ul>
+        <li>Integrate natural language generation into symbolic knowledge bases.</li>
+        <li>Improve the <strong>understandability</strong> of generated statements without altering their logical correctness.</li>
+        <li>Compare language model output to randomly generated control sentences.</li>
+      </ul>
+      <p>
+        By doing so, the project contributes to the field of <strong>Explainable Artificial Intelligence (XAI)</strong>, making reasoning
+        systems both transparent and communicative :contentReference[oaicite:4]{index=4}.
+      </p>
+    </section>
+
+    <!-- METHODS -->
+    <section>
+      <h2>Methodology</h2>
+      <p>
+        The implementation built upon an existing KBG that produces defeasible implications ranked by exceptionality. 
+        The new system added a <strong>phrase allocation module</strong> that sends each rank to the Gemini Flash 2.5 API. The model was
+        prompted using structured examples and contextual explanations of logical symbols (e.g. “→” as <em>implies</em> and
+        “|∼” as <em>typically implies</em>).
+      </p>
+      <p>
+        Each atom in the knowledge base was replaced with an English phrase that matched its meaning, forming readable
+        sentences while retaining the original logical structure. The output was compared with “manual sentences” created
+        from random but thematic phrases, providing a control for measuring understandability.
+      </p>
+      <p>
+        Three evaluation models were used to test the generated sentences:
+      </p>
+      <ul>
+        <li><strong>SBERT</strong> — measured semantic similarity between sentences.</li>
+        <li><strong>KenLM</strong> — provided coherence scores based on N-gram probabilities.</li>
+        <li><strong>Gemini</strong> — evaluated grammaticality, coherence, usability, and topical relatedness.</li>
+      </ul>
+    </section>
+
+    <!-- RESULTS -->
+    <section>
+      <h2>Results</h2>
+      <p>
+        The Gemini and SBERT evaluations both showed that LLM-generated sentences were consistently more understandable
+        and coherent than those constructed manually. On average, the Gemini model rated generated sentences as <strong>3.4 times
+        more understandable</strong> than random phrase allocations. SBERT confirmed higher semantic similarity across ranks,
+        indicating stronger conceptual consistency. Only the KenLM model, which favoured simpler sentence structures,
+        rated some manual sentences higher due to its limited vocabulary training.
+      </p>
+      <p>
+        These findings support the hypothesis that <strong>LLM-assisted generation</strong> significantly improves the interpretability of
+        symbolic knowledge bases without sacrificing logical precision :contentReference[oaicite:5]{index=5}.
+      </p>
+    </section>
+
+    <!-- DISCUSSION & CONCLUSION -->
+    <section>
+      <h2>Discussion & Conclusion</h2>
+      <p>
+        This project successfully demonstrated that <strong>symbolic logic can be made human-readable</strong> through natural language
+        generation. The approach preserved the formal integrity of defeasible reasoning while allowing users to understand
+        the structure and content of ranked knowledge bases. The results highlight how language models can act as translators
+        between formal logic and human expression.
+      </p>
+      <p>
+        Future work includes using newer Gemini models for higher linguistic accuracy, topic-specific generation for domain
+        applications, and hybrid scoring systems that combine multiple evaluators to create a unified <em>understandability score</em>.
       </p>
     </section>
 
