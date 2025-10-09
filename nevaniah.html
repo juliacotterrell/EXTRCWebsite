@@ -2,48 +2,110 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nevaniah Gounden | EXTRC Project</title>
+  <title>Nevaniah Gounden | Optimisation Techniques</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="subheader">
     <h1>Nevaniah Gounden</h1>
-    <p class="subtitle">System Development & Interface Design</p>
+    <p class="subtitle">Optimisation Techniques for Rational Closure</p>
   </header>
 
   <main>
+    <!-- ABSTRACT -->
     <section>
-      <h2>Individual Contribution</h2>
+      <h2>Abstract</h2>
       <p>
-        My contribution to EXTRC focused on system design, implementation, and interface integration. 
-        I developed the architecture connecting our reasoning engine to a user-accessible interface, 
-        enabling visualisation of inference steps and providing structured explanations of reasoning paths.
+        This project investigates how the computational efficiency of <strong>Rational Closure</strong> (RC) in
+        <em>defeasible reasoning</em> can be improved without affecting logical soundness. RC provides a way for
+        artificial intelligence systems to reason about exceptions and uncertainty, but its sequential nature
+        limits scalability. Three optimisation techniques were implemented — <strong>parallelisation</strong>,
+        <strong>sub-query memoization</strong>, and <strong>multi-rank traversal</strong> — to reduce runtime across
+        knowledge bases of increasing size and complexity. Together, these techniques achieved up to a
+        95–99% reduction in runtime compared to the baseline sequential implementation
+        :contentReference[oaicite:3]{index=3}.
       </p>
     </section>
 
+    <!-- INTRODUCTION -->
     <section>
-      <h2>Technical Work</h2>
-      <ul>
-        <li>Developed core Python modules for the inference engine.</li>
-        <li>Implemented the lexical and syntactic analyser for custom logic parsing.</li>
-        <li>Integrated front-end interaction with logical inference visualisation tools.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Documents & Code</h2>
-      <ul>
-        <li><a href="docs/final_report.pdf">Final Report (PDF)</a></li>
-        <li><a href="docs/source_code.zip">Source Code (ZIP)</a></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Reflection</h2>
+      <h2>Introduction & Aims</h2>
       <p>
-        Working on EXTRC deepened my understanding of defeasible reasoning and its computational challenges. 
-        I gained practical experience in designing interpretable AI systems that balance logical rigor 
-        with usability and scalability.
+        Rational Closure (RC) provides a structured approach for drawing cautious conclusions when information
+        contains exceptions. Although theoretically robust, RC’s sequential entailment checks make it slow for
+        large knowledge bases. This work aims to:
+      </p>
+      <ul>
+        <li>Optimise RC’s runtime performance through targeted computational enhancements.</li>
+        <li>Preserve the algorithm’s integrity and logical correctness during optimisation.</li>
+        <li>Evaluate scalability across different dataset sizes and query types.</li>
+      </ul>
+      <p>
+        By applying parallelisation, caching, and adaptive traversal methods, the study sought to make
+        Rational Closure practical for large-scale reasoning in explainable AI systems
+        :contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}.
+      </p>
+    </section>
+
+    <!-- RELATED WORK -->
+    <section>
+      <h2>Related Work</h2>
+      <p>
+        Prior implementations of Rational Closure relied on sequential entailment, as first formalised by
+        Lehmann and Magidor. Although sound, these versions suffered from exponential time growth as knowledge
+        bases increased in complexity. Later work by Casini, Giordano, and Straccia introduced syntactic and
+        semantic improvements but retained the sequential core. Recent studies explored scalability through
+        caching, distributed computing, and graphical reasoning tools, yet few directly addressed optimisation
+        of RC’s core execution loop. This project builds upon these foundations by experimentally comparing
+        multiple optimisation strategies under identical conditions to evaluate both correctness and speed.
+      </p>
+    </section>
+
+    <!-- OPTIMISATION TECHNIQUES -->
+    <section>
+      <h2>Optimisation Techniques</h2>
+
+      <h3>1. Parallelisation</h3>
+      <p>
+        Parallelisation executes entailment checks for multiple queries simultaneously, leveraging multi-core
+        processing to reduce wall-clock time. Each query runs as an isolated task, ensuring deterministic
+        results while maintaining thread safety. This approach achieved average speed-ups of 85–89% across
+        large knowledge bases, with identical outputs to the sequential baseline.
+      </p>
+
+      <h3>2. Sub-query Memoization</h3>
+      <p>
+        Memoization stores the results of previously computed sub-queries to prevent redundant computation.
+        Each entailment check generates a unique key from the query and the ranked knowledge base, ensuring
+        correctness and reusability. This reduced execution time by 40–46% for workloads containing repeated
+        or partially overlapping queries.
+      </p>
+
+      <h3>3. Multi-Rank Traversal</h3>
+      <p>
+        Traditional RC checks ranks linearly. Multi-rank traversal introduces adaptive strategies that switch
+        between <em>Naive</em>, <em>Binary</em>, or <em>Ternary</em> search depending on the depth of the
+        knowledge base. For small rank depths, linear scanning is efficient; for deeper structures, ternary
+        traversal reduces the total number of checks. This adaptability preserved correctness while improving
+        scalability for deeper or more complex reasoning tasks.
+      </p>
+
+      <div class="image-container">
+        <img src="Images/results.png" alt="Graph showing optimisation results" class="results-graph">
+        <p class="caption">Figure: Comparative runtime performance of optimisation techniques.</p>
+      </div>
+    </section>
+
+    <!-- CONCLUSION -->
+    <section>
+      <h2>Conclusion</h2>
+      <p>
+        The combined use of parallelisation, caching, and adaptive traversal produced substantial performance
+        improvements without altering logical outcomes. The best-performing configurations paired
+        <strong>parallelisation</strong> with <strong>cached traversal</strong>, achieving up to 99% faster execution
+        relative to the baseline. These findings demonstrate that Rational Closure — a foundational logic for
+        defeasible reasoning — can be efficiently scaled for practical AI applications without sacrificing
+        correctness.
       </p>
     </section>
 
