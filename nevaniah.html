@@ -19,11 +19,11 @@
         This project investigates how the computational efficiency of <strong>Rational Closure</strong> (RC) in
         <em>defeasible reasoning</em> can be improved without affecting logical soundness. RC provides a way for
         artificial intelligence systems to reason about exceptions and uncertainty, but its sequential nature
-        limits scalability. Three optimisation techniques were implemented — <strong>parallelisation</strong>,
-        <strong>sub-query memoization</strong>, and <strong>multi-rank traversal</strong> — to reduce runtime across
-        knowledge bases of increasing size and complexity. Together, these techniques achieved up to a
-        95–99% reduction in runtime compared to the baseline sequential implementation
-        :contentReference[oaicite:3]{index=3}.
+        limits scalability. Three optimisation techniques were implemented: <strong>parallelisation</strong>,
+        <strong>sub-query memoization</strong>, and <strong>multi-rank traversal</strong>. The aim was to reduce runtime across
+        knowledge bases of increasing size and complexity. Performance testing showed significant runtime improvements, typically
+        between 80% and 95%, varying by knowledge base size and query complexity.
+
       </p>
     </section>
 
@@ -31,8 +31,8 @@
     <section>
       <h2>Introduction & Aims</h2>
       <p>
-        Rational Closure (RC) provides a structured approach for drawing cautious conclusions when information
-        contains exceptions. Although theoretically robust, RC’s sequential entailment checks make it slow for
+        RC provides a structured approach for drawing cautious conclusions when information
+        contains exceptions. Although theoretically correct, RC’s sequential entailment checks make it slow for
         large knowledge bases. This work aims to:
       </p>
       <ul>
@@ -41,9 +41,8 @@
         <li>Evaluate scalability across different dataset sizes and query types.</li>
       </ul>
       <p>
-        By applying parallelisation, caching, and adaptive traversal methods, the study sought to make
-        Rational Closure practical for large-scale reasoning in explainable AI systems
-        :contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}.
+        By applying parallelisation, sub-query memoization, and adaptive traversal methods, the study sought to make
+        Rational Closure practical for large-scale reasoning in explainable AI systems.
       </p>
     </section>
 
@@ -57,7 +56,7 @@
         semantic improvements but retained the sequential core. Recent studies explored scalability through
         caching, distributed computing, and graphical reasoning tools, yet few directly addressed optimisation
         of RC’s core execution loop. This project builds upon these foundations by experimentally comparing
-        multiple optimisation strategies under identical conditions to evaluate both correctness and speed.
+        multiple optimisation strategies under identical conditions to evaluate both correctness and efficiency.
       </p>
     </section>
 
@@ -66,29 +65,25 @@
       <h2>Optimisation Techniques</h2>
 
       <h3>1. Parallelisation</h3>
-      <p>
-        Parallelisation executes entailment checks for multiple queries simultaneously, leveraging multi-core
-        processing to reduce wall-clock time. Each query runs as an isolated task, ensuring deterministic
-        results while maintaining thread safety. This approach achieved average speed-ups of 85–89% across
-        large knowledge bases, with identical outputs to the sequential baseline.
-      </p>
+        <p><em>What it is.</em> Parallelisation allows the algorithm to check several queries at the same time instead of one after another. Each query runs independently on a separate processor core, ensuring consistent and correct results.</p>
+
+        <p><em>What we observed.</em> This approach provided substantial time savings once the knowledge base was large enough to make each query costly. Across medium to large test cases, parallelisation reduced total runtime by roughly <strong>83–89%</strong> compared to sequential execution, without changing the logical outcomes. However, on very small or simple workloads, the extra coordination between threads slightly reduced efficiency.</p>
+
+        <p><em>Bottom line.</em> Parallelisation is highly effective for large or complex workloads and provides the greatest performance boost when combined with caching (memoization). For smaller datasets, the benefits are limited due to overhead.</p>
 
       <h3>2. Sub-query Memoization</h3>
-      <p>
-        Memoization stores the results of previously computed sub-queries to prevent redundant computation.
-        Each entailment check generates a unique key from the query and the ranked knowledge base, ensuring
-        correctness and reusability. This reduced execution time by 40–46% for workloads containing repeated
-        or partially overlapping queries.
-      </p>
+        <p><em>What it is.</em> Memoization stores the results of previous logical checks so they can be reused later instead of recalculated. Each result is linked to a unique “signature” of the query and its knowledge base, guaranteeing accuracy even when many queries run in parallel.</p>
+
+        <p><em>What we observed.</em> This technique cut execution time by <strong>40–46%</strong> for workloads containing repeated or partially overlapping queries. It performed best when queries shared common patterns, as the system could reuse earlier results. On completely unique queries, the effect was minimal, and in some cases neutral, since there were no results to reuse.</p>
+
+        <p><em>Bottom line.</em> Memoization is most valuable when queries overlap or repeat. When combined with parallelisation, it produces the fastest and most scalable configuration overall.</p>
 
       <h3>3. Multi-Rank Traversal</h3>
-      <p>
-        Traditional RC checks ranks linearly. Multi-rank traversal introduces adaptive strategies that switch
-        between <em>Naive</em>, <em>Binary</em>, or <em>Ternary</em> search depending on the depth of the
-        knowledge base. For small rank depths, linear scanning is efficient; for deeper structures, ternary
-        traversal reduces the total number of checks. This adaptability preserved correctness while improving
-        scalability for deeper or more complex reasoning tasks.
-      </p>
+        <p><em>What it is.</em> Instead of moving through ranks one by one, we tested adaptive “jumping” strategies (binary and ternary) that skip ahead to different parts of the ranked structure to reduce the number of checks needed.</p>
+
+        <p><em>What we observed.</em> In most cases, the ranked knowledge bases were shallow, meaning there weren’t many ranks to explore. The main cost came from the logical checks themselves, not from walking through the ranks. Because of this, the adaptive methods—while theoretically faster—added unnecessary branching and bookkeeping, making them <strong>slower than simple linear traversal</strong>. Once caching (memoization) and parallelisation were enabled, the order of traversal had almost no effect.</p>
+
+        <p><em>Bottom line.</em> Multi-rank traversal rarely improved performance and occasionally slowed it down. It remains available for unusually deep knowledge bases, but the recommended setup for best speed and efficiency is <strong>linear traversal with memoization and parallelisation</strong>.</p>
 
       <div class="image-container">
         <img src="Images/results.png" alt="Graph showing optimisation results" class="results-graph">
@@ -102,9 +97,9 @@
       <p>
         The combined use of parallelisation, caching, and adaptive traversal produced substantial performance
         improvements without altering logical outcomes. The best-performing configurations paired
-        <strong>parallelisation</strong> with <strong>cached traversal</strong>, achieving up to 99% faster execution
-        relative to the baseline. These findings demonstrate that Rational Closure — a foundational logic for
-        defeasible reasoning — can be efficiently scaled for practical AI applications without sacrificing
+        <strong>parallelisation</strong> with <strong>sub-query memoization</strong>, achieving substantially faster execution
+        relative to the baseline. These findings demonstrate that Rational Closure, a foundational logic for
+        defeasible reasoning, can be efficiently scaled for practical AI applications without sacrificing
         correctness.
       </p>
     </section>
