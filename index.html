@@ -188,9 +188,9 @@
         <div class="dropdown">
           <button class="resource-button">Source Code</button>
           <div class="dropdown-content">
-            <a href="Source Code/GNDNEV002.zip" download>Nevaniah - Source Code</a>
-            <a href="Source Code/DNNJET002.zip" download>Jethro - Source Code</a>
-            <a href="Source Code/CTTJUL001.zip" download>Julia - Source Code</a>
+            <a href="Source_Code/GNDNEV002.zip" download>Nevaniah - Source Code</a>
+            <a href="Source_Code/DNNJET002.zip" download>Jethro - Source Code</a>
+            <a href="Source_Code/CTTJUL001.zip" download>Julia - Source Code</a>
           </div>
         </div>
 
@@ -204,25 +204,37 @@
   <h2>Team</h2>
   <div class="team-grid">
 
-    <div class="team-card">
+    <div class="team-card" onclick="window.location.href='julia.html'" role="button" aria-label="Open Julia Cotterrell project page">
       <div class="team-icon">👤</div>
       <h3>Julia Cotterrell</h3>
       <p class="role">Team Member</p>
-      <p><a href="mailto:cttjul001@myuct.ac.za">cttjul001@myuct.ac.za</a></p>
+      <p><a href="mailto:cttjul001@myuct.ac.za" onclick="event.stopPropagation()">cttjul001@myuct.ac.za</a></p>
+      <a href="https://github.com/juliacotterrell\EXTRC" target="_blank" class="github-link" onclick="event.stopPropagation()">
+        <img src="images/github.svg" alt="GitHub logo" class="github-icon">
+        GitHub
+      </a>
     </div>
 
-    <div class="team-card">
+    <div class="team-card" onclick="window.location.href='nevaniah.html'" role="button" aria-label="Open Nevaniah Gounden project page">
       <div class="team-icon">👤</div>
       <h3>Nevaniah Gounden</h3>
       <p class="role">Team Member</p>
-      <p><a href="mailto:gndnev002@myuct.ac.za">gndnev002@myuct.ac.za</a></p>
+      <p><a href="mailto:gndnev002@myuct.ac.za" onclick="event.stopPropagation()">gndnev002@myuct.ac.za</a></p>
+      <a href="https://github.com/nevaniah" target="_blank" class="github-link" onclick="event.stopPropagation()">
+        <img src="images/github.svg" alt="GitHub logo" class="github-icon">
+        GitHub
+      </a>
     </div>
 
-    <div class="team-card">
+    <div class="team-card" onclick="window.location.href='jethro.html'" role="button" aria-label="Open Jethro Dunn project page">
       <div class="team-icon">👤</div>
       <h3>Jethro Dunn</h3>
       <p class="role">Team Member</p>
-      <p><a href="mailto:dnnjet002@myuct.ac.za">dnnjet002@myuct.ac.za</a></p>
+      <p><a href="mailto:dnnjet002@myuct.ac.za" onclick="event.stopPropagation()">dnnjet002@myuct.ac.za</a></p>
+      <a href="https://github.com/jethrodunn" target="_blank" class="github-link" onclick="event.stopPropagation()">
+        <img src="images/github.svg" alt="GitHub logo" class="github-icon">
+        GitHub
+      </a>
     </div>
 
     <div class="team-card">
@@ -234,6 +246,7 @@
 
   </div>
 </section>
+
 
 
 
@@ -273,6 +286,15 @@
         });
       }
     });
+    document.querySelectorAll('.team-card[onclick]').forEach(card => {
+    card.tabIndex = 0;
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
   </script>
 </body>
 </html>

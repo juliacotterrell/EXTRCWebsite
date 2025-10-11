@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Julia Cotterrell | Interactive User Interface</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <header class="subheader">
     <h1>Julia Cotterrell</h1>
@@ -35,7 +37,8 @@
       </p>
       <ul>
         <li>Develop an <strong>interactive web interface</strong> for exploring RC reasoning results.</li>
-        <li>Translate symbolic reasoning into <strong>natural language explanations</strong> to improve accessibility.</li>
+        <li>Translate symbolic reasoning into <strong>natural language explanations</strong> to improve accessibility.
+        </li>
         <li>Maintain <strong>formal correctness and responsiveness</strong> while supporting visual transparency.</li>
       </ul>
       <p>
@@ -48,7 +51,8 @@
     <section>
       <h2>System Design & Implementation</h2>
       <p>
-        The interface integrates a <strong>Java back end</strong> (via Spring Boot) with a <strong>React front end</strong>,
+        The interface integrates a <strong>Java back end</strong> (via Spring Boot) with a <strong>React front
+          end</strong>,
         connected through a RESTful API. Logical reasoning is handled by the <em>TweetyProject</em> library, which
         computes RC entailments and returns results to the user interface. The front end displays ranked knowledge
         bases, query results, and visualised reasoning chains.
@@ -56,8 +60,8 @@
       <p>
         To enhance usability, the interface uses colour-coded components, collapsible panels, and contextual
         explanations. Users can trace how statements are accepted or rejected through ranked rule evaluation,
-        supported by step-by-step annotations in natural language. Each reasoning type—Naïve, Binary, Ternary,
-        Cached, and Hybrid—is accessible interactively, enabling comparison across entailment strategies.
+        supported by step-by-step annotations in natural language. Each reasoning type (Naïve, Binary, Ternary,
+        Cached, and Hybrid) is accessible interactively, enabling comparison across entailment strategies.
       </p>
     </section>
 
@@ -86,12 +90,82 @@
         gap between human and machine reasoning. Unlike earlier RC tools, this interface narrates the reasoning
         process step-by-step, ensuring transparency and trustworthiness.
       </p>
+      <div class="qr-section">
+        <img src="images/QR.png" alt="QR Code to Web App" class="qr">
+        <p><a href="https://extrc.vercel.app" target="_blank">View the Interactive Interface</a></p>
+      </div>
       <p>
         Future enhancements include extending support to <em>Lexicographic</em> and <em>Relevant Closure</em> methods,
         refining natural language output for greater fluency, and conducting structured user studies to evaluate
         educational impact.
       </p>
     </section>
+    <!-- INTERFACE GALLERY SECTION -->
+    <section>
+      <h2>Interface Gallery</h2>
+      <p>
+        The following screenshots showcase the main components of the
+        <strong>Interactive Rational Closure Interface</strong>, illustrating both the
+        explanatory and mathematical perspectives.
+      </p>
+
+      <div class="gallery">
+        <figure>
+          <img src="images/UI/summary.png" alt="Summary of interface" onclick="openLightbox(this)">
+          <figcaption>Summary view of the knowledge base and entailment result</figcaption>
+        </figure>
+        <figure>
+          <img src="images/UI/ConnectivesList.png" alt="Connectives list" onclick="openLightbox(this)">
+          <figcaption>Connectives and notation reference</figcaption>
+        </figure>
+        <figure>
+          <img src="images/UI/syntax.png" alt="Syntax reference" onclick="openLightbox(this)">
+          <figcaption>Syntax and typing guide showing supported logical operators</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/UI/BaseRankExplorer.png" alt="Base Rank Explorer" onclick="openLightbox(this)">
+          <figcaption>Defeasible BaseRank Explorer showing materialisation and base ranking</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/UI/baseRankMaths.png" alt="Mathematical base rank" onclick="openLightbox(this)">
+          <figcaption>Mathematical definition of base rank and entailment</figcaption>
+        </figure>
+
+
+
+        <figure>
+          <img src="images/UI/exampleKB.png" alt="Example knowledge bases" onclick="openLightbox(this)">
+          <figcaption>Example defeasible knowledge bases and queries</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/UI/RatClosureExplained.png" alt="Rational Closure explained" onclick="openLightbox(this)">
+          <figcaption>Natural-language explanation of Rational Closure reasoning</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/UI/RatClosureMaths.png" alt="Rational Closure mathematics" onclick="openLightbox(this)">
+          <figcaption>Formal mathematical definition of Rational Closure entailment</figcaption>
+        </figure>
+
+
+
+        <figure>
+          <img src="images/UI/tutorial.png" alt="Tutorial interface" onclick="openLightbox(this)">
+          <figcaption>Tutorial view explaining how to build and query a knowledge base</figcaption>
+        </figure>
+      </div>
+
+      <!-- Lightbox Modal -->
+      <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="">
+      </div>
+    </section>
+
+
+
 
     <p><a href="index.html" class="back-link">← Back to Project Home</a></p>
   </main>
@@ -100,4 +174,20 @@
     <p>&copy; 2025 EXTRC Project | University of Cape Town</p>
   </footer>
 </body>
+<script>
+  function openLightbox(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = img.src;
+    lightbox.style.display = 'flex';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+  document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeLightbox();
+    });
+</script>
+
 </html>
