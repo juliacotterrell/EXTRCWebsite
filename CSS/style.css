@@ -64,9 +64,8 @@ section {
   box-shadow: 0 0 25px rgba(0, 216, 255, 0.15),
               inset 0 0 8px rgba(0, 216, 255, 0.05);
   backdrop-filter: blur(8px);
-  /* IMPORTANT: don't transform sections (prevents stacking bugs over dropdowns) */
   transition: box-shadow 0.3s ease;
-  overflow: visible; /* ensure children like dropdowns can overflow */
+  overflow: visible; 
 }
 
 section:hover {
@@ -186,8 +185,8 @@ nav a:hover {
 /* ---------- GLOBAL LINK TREATMENT (fix visited purple + restore glow) ---------- */
 a,
 a:visited {
-  color: #9fdcff;           /* softer default so emails aren’t harsh */
-  text-decoration: none;    /* remove default underline */
+  color: #9fdcff;          
+  text-decoration: none;   
 }
 
 a:hover,
@@ -266,7 +265,7 @@ a:focus-visible {
   box-shadow: 0 0 15px rgba(0, 216, 255, 0.3);
   backdrop-filter: blur(6px);
   animation: fadeIn 0.2s ease;
-  z-index: 99999;           /* 🔥 ensures dropdown sits above EVERYTHING */
+  z-index: 99999;           
 }
 
 /* prevent parent sections from clipping or hiding dropdowns */
@@ -275,7 +274,6 @@ main,
 body {
   overflow: visible !important;
 }
-
 
 .dropdown-content a {
   display: block;
@@ -298,7 +296,6 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ---------- ARROW ---------- */
 .dropdown button::after {
   content: "▼";
   font-size: 0.8em;
@@ -314,7 +311,6 @@ body {
   color: #041c32;
 }
 
-/* ---------- RESPONSIVE TWEAKS ---------- */
 @media (max-width: 768px) {
   main { padding: 0 1.2em; }
   .resource-button, .dropdown button { min-width: 160px; }
@@ -323,17 +319,17 @@ body {
 /* --- FIX DROPDOWN HIDDEN BEHIND TEAM SECTION --- */
 #team {
   position: relative;
-  z-index: 1; /* keep team content on normal layer */
+  z-index: 1; 
 }
 
 .dropdown-content {
-  z-index: 9999 !important; /* ensure dropdown stays above everything */
+  z-index: 9999 !important; 
 }
 
 section {
-  position: relative; /* reset stacking context for each section */
+  position: relative; 
   z-index: 0;
-  overflow: visible; /* let dropdowns overflow cleanly */
+  overflow: visible; 
 }
 
 main, body {
@@ -344,7 +340,6 @@ main, body {
    FIX DROPDOWN HIDING BEHIND TEAM
    =============================== */
 
-/* Create separate stacking layer for dropdowns */
 .dropdown {
   position: relative;
   z-index: 5000;
@@ -353,7 +348,7 @@ main, body {
 /* Make sure dropdown menu always floats on top */
 .dropdown-content {
   position: absolute;
-  z-index: 999999; /* highest layer */
+  z-index: 999999; 
 }
 
 /* Keep section backgrounds behind dropdowns */
@@ -366,12 +361,12 @@ section {
 /* Specifically push the Team section lower in stacking order */
 #team {
   position: relative;
-  z-index: -1; /* ensures it stays below all dropdowns */
+  z-index: -1; 
 }
 
 /* ====== UCT INFO FOOTER ====== */
 #uct-footer {
-  background: rgba(6, 26, 38, 0.75); /* match your sections */
+  background: rgba(6, 26, 38, 0.75); 
   color: #e0f7ff;
   text-align: center;
   padding: 3em 1em 2em;
@@ -387,9 +382,9 @@ section {
 }
 
 .uct-logo {
-  width: 400px; /* increased size */
+  width: 400px; 
   margin-bottom: 1.2em;
-  filter: drop-shadow(0 0 15px rgba(0, 216, 255, 0.3)); /* subtle glow */
+  filter: drop-shadow(0 0 15px rgba(0, 216, 255, 0.3)); 
 }
 
 #uct-footer h3 {
@@ -416,7 +411,6 @@ section {
   text-shadow: 0 0 8px #00d8ff;
 }
 
-/* copyright line */
 .uct-copy {
   margin-top: 2em;
   color: #a0cfff;
@@ -506,14 +500,12 @@ section {
   border-bottom: 1px solid rgba(0,216,255,0.4);
 }
 
-/* Responsive layout */
 @media (max-width: 768px) {
   .team-grid {
     grid-template-columns: 1fr;
     gap: 1.5em;
   }
 }
-
 
 .team-card h3 {
   margin: 0.3em 0 0.2em;
@@ -552,7 +544,6 @@ section {
   box-shadow: 0 0 30px rgba(0, 216, 255, 0.25);
 }
 
-/* Responsive layout */
 @media (max-width: 768px) {
   .team-grid {
     grid-template-columns: 1fr;
@@ -560,10 +551,9 @@ section {
   }
 }
 
-/* --- FIX: Dropdown menus hiding behind Team section --- */
 .dropdown {
   position: relative;
-  z-index: 1000; /* higher than Team */
+  z-index: 1000; 
 }
 
 .dropdown-content {
@@ -577,10 +567,9 @@ section {
   backdrop-filter: blur(6px);
   display: none;
   min-width: 200px;
-  z-index: 9999; /* ensures dropdown stays on top */
+  z-index: 9999; 
 }
 
-/* Lower the Team section slightly in stacking order */
 #team {
   position: relative;
   z-index: 0;
@@ -607,33 +596,28 @@ section {
   box-shadow: 0 0 25px rgba(0, 216, 255, 0.3);
   backdrop-filter: blur(6px);
   animation: fadeIn 0.2s ease;
-  z-index: 9999999; /* highest level so nothing overlaps */
+  z-index: 9999999; 
 }
 
 /* Lower the Team section beneath dropdowns */
 #team {
   position: relative;
   z-index: 1;
-  isolation: isolate; /* keeps its blur effects without blocking layers above */
+  isolation: isolate; 
 }
 
-/* Optional: ensure Resources section is normal stacking context */
 #resources {
   position: relative;
   z-index: 10;
 }
 
-/* === FINAL Z-INDEX HIERARCHY FIX === */
-
-/* Navigation should always be the very top layer */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 99999999; /* highest overall */
+  z-index: 99999999; 
 }
 
-/* Dropdowns should be above page content but below nav */
 .dropdown {
   position: relative;
   z-index: 9999;
@@ -644,13 +628,11 @@ nav {
   z-index: 99999;
 }
 
-/* Resources section normal stacking context */
 #resources {
   position: relative;
-  z-index: 1; /* below nav, above team */
+  z-index: 1; 
 }
 
-/* Team sits below dropdowns but above background */
 #team {
   position: relative;
   z-index: 0;
@@ -712,8 +694,6 @@ nav {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-
-
 .gallery img {
   width: 100%;
   height: auto;
@@ -733,7 +713,6 @@ nav {
   font-size: 0.9rem;
 }
 
-/* Lightbox styling */
 .lightbox {
   display: none;
   position: fixed;
@@ -754,8 +733,6 @@ nav {
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(255,255,255,0.3);
 }
-
-
 
 .github-link {
   display: inline-flex;
